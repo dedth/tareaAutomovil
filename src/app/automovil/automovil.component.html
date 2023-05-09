@@ -1,0 +1,99 @@
+<div class="formgrid grid" [ngStyle]="{backgroundColor:'var(--primary-color)', color: 'var(--primary-color-text)', borderRadius: 'var(--border-radius)', padding: '3rem'}">
+    <div class="col-6">
+      <p-panel header="Reactive Forms">
+        <form [formGroup]="form" (ngSubmit)="onSubmitk()" (ngSubmit)="onSubmit()" class="p-fluid">
+          <div class="field">
+
+            <label>Modelo:</label>
+            <br>
+            <input type="text" pInputText formControlName="modelo" />
+            <small *ngIf="form.controls['modelo'].errors && form.controls['modelo'].touched">
+              Tiene errores
+            </small>
+            <label>Placa:</label>
+            <br>
+            <p-multiSelect [options]="tipoplaca" formControlName="placa" [(ngModel)]="selectedplaca"
+            optionLabel="name"></p-multiSelect>
+            
+  
+            <div class="field">
+              <label>FechaCompra:</label>
+              <form [formGroup]="form">
+                <p-calendar formControlName="fechaCompra"></p-calendar>
+              </form>
+            </div>
+  
+            <div class="field">
+              <label>opcion:</label>
+              <form [formGroup]="form">
+                <p-cascadeSelect formControlName="opcion" [options]="countries" optionLabel="cname" optionGroupLabel="name"
+                  [optionGroupChildren]="['states', 'cities']" [style]="{ minWidth: '14rem' }"
+                  placeholder="Seleccione diesel/gasolina"></p-cascadeSelect>
+
+                  <label htmlFor="restriccionEdad">Detalle del vehiculo</label>
+                  <form [formGroup]="form">
+                    <textarea rows="5" cols="30" pInputTextarea formControlName="detalles"></textarea>
+                    <br>
+                    <label>Tipo vehiculo:</label>
+                    <p-selectButton formControlName="modo" [options]="paymentOptions" [(ngModel)]="value" [multiple]="true"
+                    optionLabel="name" optionValue="value"></p-selectButton>
+                    
+                  </form>
+              </form>
+            </div>
+               
+            <div class="card flex justify-content-center">
+                <p-image src="https://www.roshfrans.com/img/ImagenesBlog/1400x600.3-1.jpg" [preview]="true" alt="Image" width="250">
+                    <ng-template pTemplate="indicator">
+                        <i class="pi pi-check"></i>
+                    </ng-template>
+                   
+                </p-image>
+               
+            </div>
+            <label>calificacion Vehiculo</label>
+            <form [formGroup]="form">
+                <p-rating formControlName="calificacionVehiculo"></p-rating>
+              </form>
+        
+  
+  
+          
+
+  
+            
+              <label>Opcion:</label>
+              <div class="card flex justify-content-center">
+                <form [formGroup]="form">
+                  <p-listbox [options]="lenguaje" formControlName="uso" optionLabel="name"
+                    [style]="{ width: '15rem' }"></p-listbox>
+                </form>
+              </div>
+          
+  
+            <div class="field">
+              <label>Cantidad de vehiculo:</label>
+              <div class="card flex justify-content-center">
+                <form [formGroup]="form">
+                  <p-knob formControlName="aforo"></p-knob>
+                </form>
+              </div>
+            </div>
+  
+            <div class="field">
+              <label>Estado:</label>
+              <p-checkbox [(ngModel)]="estado" [binary]="true" formControlName="estado" inputId="binary"></p-checkbox>
+            </div>
+  
+            <div class="field">
+              <button pButton type="submit" label="Guardar"></button>
+            </div>
+
+          </div>
+        </form>
+      </p-panel>
+    </div>
+  </div>
+  
+  
+  {{form.value|json}}
