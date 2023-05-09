@@ -114,7 +114,7 @@ throw new Error('Method not implemented.');
   constructor(private formBuilder: FormBuilder) {
     this.form = formBuilder.group({
       modelo: ['', [Validators.requiredTrue]],
-      placa: ['', [Validators.required, Validators.minLength(7)]],
+      placa: ['', [Validators.requiredTrue]],
       fechaCompra: [new Date()],
       opcion: ['', [Validators.required, Validators.minLength(3)]],
       detalles: ['', [Validators.min(1)]],
