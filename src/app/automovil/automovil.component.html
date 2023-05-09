@@ -7,9 +7,6 @@
             <label>Modelo:</label>
             <br>
             <input type="text" pInputText formControlName="modelo" />
-            <small *ngIf="form.controls['modelo'].errors && form.controls['modelo'].touched">
-              Tiene errores
-            </small>
             <label>Placa:</label>
             <br>
             <p-multiSelect [options]="tipoplaca" formControlName="placa" [(ngModel)]="selectedplaca"
